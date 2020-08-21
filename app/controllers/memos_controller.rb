@@ -19,6 +19,6 @@ class MemosController < ApplicationController
     private
 
     def set_params
-        params[:memo].permit(:memo)
+        params[:memo].permit(:memo, :category)
     end
 end

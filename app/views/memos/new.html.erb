@@ -1,4 +1,7 @@
 <%= form_with model: @memo do |f| %>
+    <%= f.label :category %><br>
+    <%= f.text_field :category %><br>
+    <%= f.label :memo %><br>
     <%= f.text_field :memo %><br>
     <%= f.submit "メモる" %>
 <% end %>
