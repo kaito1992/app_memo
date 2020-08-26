@@ -1,9 +1,11 @@
 class MemosController < ApplicationController
     def index
+        @memo = Memo.all
     end
 
     def new
         @memo = Memo.new
+        @memos = Memo.all
     end
 
     def create
@@ -19,6 +21,6 @@ class MemosController < ApplicationController
     private
 
     def set_params
-        params[:memo].permit(:memo, :category)
+        params[:memo].permit(:memo, :category).merge(user_id: current_user.id)
     end
 end

@@ -1,3 +1,30 @@
+<% if user_signed_in? %>
+  <%= "#{current_user.user_name}さんでログイン中" %> 
+  <br>
+  <article>
+    <% @memos.each do |memo| %>
+        <div>
+          <span><%= memo.category %></span>
+          <span><%= memo.memo %></span>
+        </div>
+    <% end %>
+  </article>
+  <%= link_to destroy_user_session_path, method: "delete" do %>
+    <%= "ログアウト" %>
+  <% end %>
+<% else %>
+  <%= "ログインしていません" %>
+  <br>
+  <%= link_to new_user_registration_path do %>
+    <%= "ユーザー登録ページへ" %>
+  <% end %>
+  <br>
+  <%= link_to new_user_session_path do %>
+    <%= "ログインページへ" %>
+  <% end %>
+  <br>
+<% end %>
+
 <%= form_with model: @memo do |f| %>
     <%= f.label :category %><br>
     <%= f.text_field :category %><br>
@@ -5,3 +32,7 @@
     <%= f.text_field :memo %><br>
     <%= f.submit "メモる" %>
 <% end %>
+
+<%= link_to new_user_registration_path do %>
+    <%= "Sign up" %>
+<% end %> 
